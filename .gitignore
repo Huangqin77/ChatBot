@@ -1,0 +1,46 @@
+# Dependencies, local environments and caches
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.test-tmp/
+.cache/
+.submission-work/
+.vercel/
+*.tsbuildinfo
+
+# Secrets and local databases (including SQLite WAL sidecars)
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Builds, archives, logs and private execution evidence
+dist/
+build/
+coverage/
+htmlcov/
+.coverage*
+playwright-report/
+test-results/
+test-results-*/
+artifacts/
+*.log
+logs/
+*.zip
+*.zip.sha256
+*.tar.gz
+*.tmp
+.DS_Store
+Thumbs.db

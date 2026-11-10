@@ -1,0 +1,15 @@
+node_modules
+.git
+.vercel
+.env
+.env.*
+!.env.example
+dist
+test-results
+test-results-*
+playwright-report
+*.tsbuildinfo
+*.zip
+tests
+scripts
+DELIVERY.md

@@ -1,0 +1,7 @@
+import { ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react'
+import { navigation } from '../lib/config'
+import { Logo, WorkspaceLink } from './ui'
+
+export default function Footer() {
+  return <><section className="bottom-cta-section"><div className="container"><div className="bottom-cta"><div className="cta-orbit orbit-a" aria-hidden="true" /><div className="cta-orbit orbit-b" aria-hidden="true" /><div className="cta-content"><span className="cta-eyebrow"><Sparkles size={14} /> BETTER, TOGETHER.</span><h2>你的下一位好搭档，<br />已经准备就绪。</h2><p>带上你的想法，和团队、AI 一起开始。</p><WorkspaceLink className="button-white" arrow={false}>进入 CollabAI 工作台 <ArrowRight size={17} /></WorkspaceLink></div><div className="cta-art" aria-hidden="true"><div className="cta-art-center"><Sparkles size={44} /></div><span className="cta-art-node node-top">想法</span><span className="cta-art-node node-right">AI</span><span className="cta-art-node node-bottom">团队</span><span className="cta-art-caption">GOOD IDEAS DESERVE GREAT COMPANY.</span></div></div></div></section><footer className="site-footer"><div className="container"><div className="footer-top"><div><Logo /><p>让人类与 AI，一起创造更多可能。</p></div><nav aria-label="页脚导航">{navigation.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}<a href="#home" className="back-top">回到顶部 <ArrowUpRight size={14} /></a></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} CollabAI. Built for collaboration.</span><span><span className="live-dot" /> 人与 AI 的协作空间</span></div></div></footer></>
+}
