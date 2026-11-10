@@ -2,7 +2,7 @@
 
 两个独立 Coding 项目：Relay 多人 AI 协作聊天室，以及 CollabAI 产品官网。保留已有实现与页面设计，以最小修改完成联合验收。
 
-本轮结论：任务一 **PASS WITH LIMITATIONS**，任务二 **PASS**。真实 LLM 供应商端到端测试为 **NOT RUN：缺少有效 API Key**。GitHub 交付等待用户登录，尚未上传，也未公开部署网页。完整证据见 [SUBMISSION_ACCEPTANCE.md](SUBMISSION_ACCEPTANCE.md)。
+本轮结论：任务一 **PASS WITH LIMITATIONS**，任务二 **PASS**。真实 LLM 供应商端到端测试为 **NOT RUN：缺少有效 API Key**。源码已上传至 [Private GitHub 仓库](https://github.com/Huangqin77/AI-Coding-Interview)，默认分支 `main`，全新远程 clone 的依赖安装、构建和后端测试已通过。网页尚未公开部署。完整证据见 [SUBMISSION_ACCEPTANCE.md](SUBMISSION_ACCEPTANCE.md)。
 
 ## 题目要求与实现对应
 
@@ -153,10 +153,10 @@ git diff --cached --check
 git diff --cached --stat
 ```
 
-GitHub 默认目标为 **Private** 仓库 `AI-Coding-Interview`。本轮未登录 GitHub，尚未确认同名远程仓库是否存在，因此未创建、绑定或推送远程。本地已准备首次提交；用户在终端执行 `gh auth login` 并亲自完成浏览器授权后，继续核对账号与目标仓库，再推送 `main`。禁止 force push 或覆盖已有项目。
+已通过本机保存的 GitHub 凭据验证账号 `Huangqin77`。确认同名仓库不存在后创建 **Private** 仓库 [AI-Coding-Interview](https://github.com/Huangqin77/AI-Coding-Interview)，绑定 `origin` 并正常推送 `main`；未 force push，未覆盖已有项目。远程 75 个文件与本地逐 blob 一致，真实 `.env`、SQLite、依赖、构建产物和本地执行记录均未上传。全新 GitHub clone 安装与构建通过，后端 57 项测试通过。
 
 面试官访问 Private 仓库：在仓库 **Settings → Collaborators** 邀请其 GitHub 账号。若决定公开，在 **Settings → General → Danger Zone → Change repository visibility** 切换 Public；本轮不自动公开。GitHub 源码仓库地址不是聊天室在线访问地址，上传源码也不代表网站已部署。
 
 ## 当前限制
 
-真实供应商兼容性、额度、工具选择和总结质量均未实测。聊天室是单进程本地演示，不含生产账号权限、多进程广播、崩溃任务续跑、Bot 配置编辑/删除、附件与 token 流式输出。管理功能为创建 Bot 和房间成员管理。官网尚未公开部署，也没有公网工作台。远程创建、推送、远程目录检查和全新 GitHub clone 验证等待认证，均未标记 PASS。
+真实供应商兼容性、额度、工具选择和总结质量均未实测。聊天室是单进程本地演示，不含生产账号权限、多进程广播、崩溃任务续跑、Bot 配置编辑/删除、附件与 token 流式输出。管理功能为创建 Bot 和房间成员管理。官网尚未公开部署，也没有公网工作台。GitHub 源码上传完成不代表网页已上线。

@@ -9,7 +9,7 @@
 | 任务一 task1-chatroom | **PASS WITH LIMITATIONS** | Demo 业务、真实工具和持久化通过；真实供应商 LLM 未执行 |
 | 任务二 task2-landing | **PASS** | 本地独立运行、响应式、交互与生产演示回退通过；尚未公开部署 |
 | 联合本地源码验收 | **PASS WITH LIMITATIONS** | 已完成干净安装、测试和安全审查，详情如下 |
-| GitHub 交付 | **NOT RUN / 等待认证** | GitHub CLI 未登录，未创建远程或推送；不能称为远程交付完成 |
+| GitHub 交付 | **PASS** | Private 仓库创建并推送 main；远程源码、安全和全新 clone 验证通过 |
 
 ## 任务一：实际功能验收
 
@@ -105,26 +105,29 @@ warning 为 Starlette 对 httpx 测试适配层的弃用提示，无测试失败
 | --- | --- |
 | Git | 已安装，2.56.0.windows.4 |
 | GitHub CLI | 初始未安装；已在忽略的临时工具目录下载官方 2.103.3 便携版，并核对官方 SHA256 |
-| 身份认证 | `gh auth status`：未登录任何 GitHub host |
-| 原有仓库 / 远程 | 本轮开始时根目录及两个项目均无 Git 仓库，未配置远程 |
-| 仓库 URL | **N/A：尚未创建或绑定** |
-| 仓库可见性 | **计划 Private；远程尚未创建** |
-| 默认分支 | 本地准备 main；远程 NOT RUN |
-| 本地提交 | 已准备首次提交；当前本地 Hash 可用 `git rev-parse HEAD` 查看，不代表 GitHub 上传成功 |
-| GitHub 最新 Commit Hash | **N/A：未推送** |
-| 上传时间 | **N/A：未上传** |
-| 同名仓库存在性 | **NOT RUN：待认证后查询本人账号，避免误绑定或覆盖** |
-| 远程存在、main、两个源码目录、README、依赖和测试完整性 | **NOT RUN：未创建远程** |
-| 远程敏感文件复查 | **NOT RUN：未推送** |
-| 全新 GitHub clone 安装、构建 | **NOT RUN：未推送；本地独立干净副本复现已通过** |
+| 身份认证 | `gh auth status`：已验证账号 Huangqin77；使用本机 Git Credential Manager 保存的凭据，仅在当前进程供 gh 使用，未写入源码或索取 Token |
+| 原有仓库 / 远程 | 恢复交付时已有本地 main / 0c61f7c，无远程；本次仅绑定新创建的本人仓库 |
+| 仓库 URL | **https://github.com/Huangqin77/AI-Coding-Interview** |
+| 仓库可见性 | **Private**（API private=true） |
+| 默认分支 | **main**（本地、远程一致） |
+| 已验证源码 Commit Hash | **0c61f7ce41903abaaa6c0ec8ef47507e0a3f8f31**，首次推送与远程逐 blob 比对通过 |
+| GitHub 最新 Commit Hash | 交付文档随后独立提交；[main 最新提交](https://github.com/Huangqin77/AI-Coding-Interview/commits/main) 以 `git ls-remote origin refs/heads/main` 为准，最终精确 Hash 另在交付回复中列明，避免文档自引用提交 Hash |
+| 上传时间 | **2026-11-10 21:25（Asia/Shanghai）首次源码上传**；本报告同步随后完成 |
+| 同名仓库存在性 | 创建前本人账号下查询返回 HTTP 404，之后正常创建，无覆盖或 force push |
+| 远程存在、main、两个源码目录、README、依赖和测试完整性 | **PASS**：API 文件树 75 个文件，与本地源码 blob 全部一致；README API 可读取；两个 .env.example、验收报告、源码、依赖清单及全部测试齐全 |
+| 远程敏感文件复查 | **PASS**：GitHub 全新 clone 的暂存 / 跟踪 blob 75 个，0 个扫描发现；无真实 .env、数据库、依赖、构建、日志或本地私密执行记录 |
+| 全新 GitHub clone 安装、构建 | **PASS**：两个前端 npm ci / npm run build；独立新 venv 安装锁定依赖、pip check、pytest 57 passed / 1 warning |
 
-下一步由用户在终端执行 `gh auth login` 并亲自完成浏览器授权，不提供密码或 Token。CLI 为临时便携版时，在仓库根目录执行：
+远程验证在被忽略的独立 `.submission-work/github-clone/` 完成。任务一首次 npm ci 遇到 ECONNRESET 网络中断，使用此前下载的包缓存重试后安装与构建通过；未修改依赖版本、源码或测试。任务二安装与构建、后端安装与 57 项测试均通过。本轮只补做 GitHub 交付与 clone 验证，浏览器 E2E 结果沿用上文本轮联合验收，不宣称本次再次运行。
+
+后续可从仓库根目录验证远程提交：
 
 ```powershell
-$env:Path = (Join-Path (Get-Location) '.submission-work/tools/gh/bin') + ';' + $env:Path
-gh auth login
+git remote -v
+git rev-parse HEAD
+git ls-remote origin refs/heads/main
 ```
 
-认证后才继续核对 GitHub 账号和同名目标、创建 Private 仓库、推送 main、检查远程与全新 clone，并更新本报告的 URL、可见性、Hash 和上传时间。本地首次提交不关联任何远程。不得 force push。用户可在 Settings → Collaborators 邀请面试官，或自行确认后在 Settings → General → Danger Zone 切换 Public。
+业务功能与已验收设计均未修改；本次只同步根 README 和本报告的实际 GitHub 状态。用户可在仓库 Settings → Collaborators → Add people 邀请面试官 GitHub 账号，对方接受后即可访问；本轮未自动邀请任何人，也未切换 Public。如需公开，可自行在 Settings → General → Danger Zone 切换仓库可见性。
 
-**联合源码结论：PASS WITH LIMITATIONS。GitHub 交付尚未完成，停止在用户认证步骤。**
+**联合源码结论：PASS WITH LIMITATIONS（真实 LLM 仍缺 Key）。GitHub 源码交付：PASS。上传源码不等于聊天室或官网已公开部署。**
