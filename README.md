@@ -1,8 +1,8 @@
-# AI Coding Interview
+# ChatBot · AI Coding Interview
 
 两个独立 Coding 项目：Relay 多人 AI 协作聊天室，以及 CollabAI 产品官网。保留已有实现与页面设计，以最小修改完成联合验收。
 
-本轮结论：任务一 **PASS WITH LIMITATIONS**，任务二 **PASS**。真实 LLM 供应商端到端测试为 **NOT RUN：缺少有效 API Key**。源码已上传至 [Private GitHub 仓库](https://github.com/Huangqin77/AI-Coding-Interview)，默认分支 `main`，全新远程 clone 的依赖安装、构建和后端测试已通过。网页尚未公开部署。完整证据见 [SUBMISSION_ACCEPTANCE.md](SUBMISSION_ACCEPTANCE.md)。
+本轮结论：任务一 **PASS WITH LIMITATIONS**，任务二 **PASS**。真实 LLM 供应商端到端测试为 **NOT RUN：缺少有效 API Key**。源码已上传至 [Public GitHub 仓库 ChatBot](https://github.com/Huangqin77/ChatBot)，任何人可直接查看和克隆；默认分支 `main`，全新远程 clone 的依赖安装、构建和后端测试已通过。网页尚未公开部署。完整证据见 [SUBMISSION_ACCEPTANCE.md](SUBMISSION_ACCEPTANCE.md)。
 
 ## 题目要求与实现对应
 
@@ -23,7 +23,7 @@
 - 两个前端分别安装依赖，无根目录 npm workspace；Vite 和 TypeScript 版本独立，不要求强行统一。
 
 ```text
-AI-Coding-Interview/
+ChatBot/
 ├── README.md
 ├── SUBMISSION_ACCEPTANCE.md
 ├── .gitignore
@@ -153,9 +153,15 @@ git diff --cached --check
 git diff --cached --stat
 ```
 
-已通过本机保存的 GitHub 凭据验证账号 `Huangqin77`。确认同名仓库不存在后创建 **Private** 仓库 [AI-Coding-Interview](https://github.com/Huangqin77/AI-Coding-Interview)，绑定 `origin` 并正常推送 `main`；未 force push，未覆盖已有项目。远程 75 个文件与本地逐 blob 一致，真实 `.env`、SQLite、依赖、构建产物和本地执行记录均未上传。全新 GitHub clone 安装与构建通过，后端 57 项测试通过。
+已通过本机保存的 GitHub 凭据验证账号 `Huangqin77`。仓库最初按 Private 创建和验收，随后根据用户明确要求重命名为 **[ChatBot](https://github.com/Huangqin77/ChatBot)** 并切换为 **Public**；本地 `origin` 已同步，未 force push，未覆盖已有项目。远程 75 个文件与本地逐 blob 一致，真实 `.env`、SQLite、依赖、构建产物和本地执行记录均未上传。全新 GitHub clone 安装与构建通过，后端 57 项测试通过。
 
-面试官访问 Private 仓库：在仓库 **Settings → Collaborators** 邀请其 GitHub 账号。若决定公开，在 **Settings → General → Danger Zone → Change repository visibility** 切换 Public；本轮不自动公开。GitHub 源码仓库地址不是聊天室在线访问地址，上传源码也不代表网站已部署。
+将仓库链接直接分享给面试官即可查看源码，无需邀请或授权。也可以直接克隆：
+
+```bash
+git clone https://github.com/Huangqin77/ChatBot.git
+```
+
+GitHub 源码仓库地址不是聊天室在线访问地址，上传源码也不代表网站已部署。
 
 ## 当前限制
 

@@ -9,7 +9,7 @@
 | 任务一 task1-chatroom | **PASS WITH LIMITATIONS** | Demo 业务、真实工具和持久化通过；真实供应商 LLM 未执行 |
 | 任务二 task2-landing | **PASS** | 本地独立运行、响应式、交互与生产演示回退通过；尚未公开部署 |
 | 联合本地源码验收 | **PASS WITH LIMITATIONS** | 已完成干净安装、测试和安全审查，详情如下 |
-| GitHub 交付 | **PASS** | Private 仓库创建并推送 main；远程源码、安全和全新 clone 验证通过 |
+| GitHub 交付 | **PASS** | main 已推送；按用户要求改名 ChatBot 并切换 Public，任何人可查看与克隆；远程源码、安全和全新 clone 验证通过 |
 
 ## 任务一：实际功能验收
 
@@ -107,11 +107,11 @@ warning 为 Starlette 对 httpx 测试适配层的弃用提示，无测试失败
 | GitHub CLI | 初始未安装；已在忽略的临时工具目录下载官方 2.103.3 便携版，并核对官方 SHA256 |
 | 身份认证 | `gh auth status`：已验证账号 Huangqin77；使用本机 Git Credential Manager 保存的凭据，仅在当前进程供 gh 使用，未写入源码或索取 Token |
 | 原有仓库 / 远程 | 恢复交付时已有本地 main / 0c61f7c，无远程；本次仅绑定新创建的本人仓库 |
-| 仓库 URL | **https://github.com/Huangqin77/AI-Coding-Interview** |
-| 仓库可见性 | **Private**（API private=true） |
+| 仓库 URL | **https://github.com/Huangqin77/ChatBot** |
+| 仓库可见性 | **Public**（API private=false、visibility=public）；用户明确要求向所有人开放查看和克隆 |
 | 默认分支 | **main**（本地、远程一致） |
 | 已验证源码 Commit Hash | **0c61f7ce41903abaaa6c0ec8ef47507e0a3f8f31**，首次推送与远程逐 blob 比对通过 |
-| GitHub 最新 Commit Hash | 交付文档随后独立提交；[main 最新提交](https://github.com/Huangqin77/AI-Coding-Interview/commits/main) 以 `git ls-remote origin refs/heads/main` 为准，最终精确 Hash 另在交付回复中列明，避免文档自引用提交 Hash |
+| GitHub 最新 Commit Hash | 交付文档随后独立提交；[main 最新提交](https://github.com/Huangqin77/ChatBot/commits/main) 以 `git ls-remote origin refs/heads/main` 为准，最终精确 Hash 另在交付回复中列明，避免文档自引用提交 Hash |
 | 上传时间 | **2026-11-10 21:25（Asia/Shanghai）首次源码上传**；本报告同步随后完成 |
 | 同名仓库存在性 | 创建前本人账号下查询返回 HTTP 404，之后正常创建，无覆盖或 force push |
 | 远程存在、main、两个源码目录、README、依赖和测试完整性 | **PASS**：API 文件树 75 个文件，与本地源码 blob 全部一致；README API 可读取；两个 .env.example、验收报告、源码、依赖清单及全部测试齐全 |
@@ -128,6 +128,6 @@ git rev-parse HEAD
 git ls-remote origin refs/heads/main
 ```
 
-业务功能与已验收设计均未修改；本次只同步根 README 和本报告的实际 GitHub 状态。用户可在仓库 Settings → Collaborators → Add people 邀请面试官 GitHub 账号，对方接受后即可访问；本轮未自动邀请任何人，也未切换 Public。如需公开，可自行在 Settings → General → Danger Zone 切换仓库可见性。
+业务功能与已验收设计均未修改；本次只同步根 README 和本报告的实际 GitHub 状态。仓库最初按 Private 交付，随后于 2026-11-10 按用户明确要求重命名 ChatBot 并切换 Public；仓库 ID 1452697220 保持不变，本地 origin 已同步为新地址。直接分享仓库链接即可让面试官查看和克隆，无需逐个邀请。
 
 **联合源码结论：PASS WITH LIMITATIONS（真实 LLM 仍缺 Key）。GitHub 源码交付：PASS。上传源码不等于聊天室或官网已公开部署。**
